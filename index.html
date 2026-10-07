@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pick Security Team — Custom Websites, Hosting & Security</title>
+  <meta name="description" content="Pick Security Team builds custom websites, hosts them, and keeps them secure. 100+ rep. Simple one-time pricing: Basic, Advanced, Business." />
+  <style>
+    :root {
+      --bg: #0b1120;
+      --bg-soft: #111a2e;
+      --card: #16213a;
+      --line: #25314f;
+      --text: #e8edf7;
+      --muted: #9aa8c4;
+      --accent: #34d399;
+      --accent-dark: #0e9f6e;
+      --gold: #f5c451;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: "Segoe UI", system-ui, -apple-system, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .container { width: min(1100px, 92%); margin: 0 auto; }
+
+    
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(11, 17, 32, 0.92);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(8px);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 0;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 700;
+      font-size: 1.05rem;
+      letter-spacing: 0.3px;
+    }
+
+    .logo .shield {
+      width: 30px;
+      height: 30px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+      color: #06281d;
+      border-radius: 8px;
+      font-size: 1rem;
+    }
+
+    .nav-links { display: flex; gap: 26px; font-size: 0.95rem; color: var(--muted); }
+    .nav-links a:hover { color: var(--accent); }
+
+    .btn {
+      display: inline-block;
+      padding: 12px 24px;
+      border-radius: 10px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .btn:hover { transform: translateY(-2px); }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+      color: #052b20;
+      box-shadow: 0 8px 24px rgba(52, 211, 153, 0.25);
+    }
+
+    .btn-ghost { border: 1px solid var(--line); color: var(--text); }
+    .btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
+
+    
+    .hero { padding: 90px 0 70px; text-align: center; }
+
+    .badge {
+      display: inline-block;
+      padding: 6px 16px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      color: var(--gold);
+      font-size: 0.85rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 22px;
+    }
+
+    h1 {
+      font-size: clamp(2.1rem, 5vw, 3.4rem);
+      line-height: 1.15;
+      letter-spacing: -0.5px;
+    }
+
+    h1 span { color: var(--accent); }
+
+    .hero p {
+      max-width: 640px;
+      margin: 20px auto 32px;
+      color: var(--muted);
+      font-size: 1.08rem;
+    }
+
+    .hero-actions { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+
+    
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 18px;
+      margin-top: 60px;
+    }
+
+    .stat {
+      background: var(--bg-soft);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 26px 18px;
+      text-align: center;
+    }
+
+    .stat b { display: block; font-size: 2rem; color: var(--accent); }
+    .stat span { color: var(--muted); font-size: 0.92rem; }
+
+    
+    section { padding: 70px 0; }
+
+    .section-head { text-align: center; max-width: 680px; margin: 0 auto 45px; }
+    .section-head h2 { font-size: clamp(1.6rem, 3.5vw, 2.3rem); }
+    .section-head p { color: var(--muted); margin-top: 12px; }
+
+    .eyebrow {
+      color: var(--accent);
+      font-size: 0.82rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+
+    
+    #about { background: var(--bg-soft); border-block: 1px solid var(--line); }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+    }
+
+    .about-card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 28px;
+    }
+
+    .about-card .icon { font-size: 1.8rem; margin-bottom: 12px; }
+    .about-card h3 { margin-bottom: 8px; font-size: 1.15rem; }
+    .about-card p { color: var(--muted); font-size: 0.97rem; }
+
+    
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 24px;
+    }
+
+    .service {
+      background: var(--bg-soft);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 30px 26px;
+      transition: transform 0.2s ease, border-color 0.2s ease;
+    }
+
+    .service:hover { transform: translateY(-5px); border-color: var(--accent); }
+    .service h3 { margin: 14px 0 8px; }
+    .service p { color: var(--muted); font-size: 0.97rem; }
+    .service .num { color: var(--accent); font-weight: 700; font-size: 0.85rem; letter-spacing: 2px; }
+
+    
+    #pricing { background: var(--bg-soft); border-block: 1px solid var(--line); }
+
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+      gap: 24px;
+      align-items: stretch;
+    }
+
+    .plan {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 34px 28px;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+
+    .plan.featured {
+      border-color: var(--accent);
+      box-shadow: 0 18px 45px rgba(52, 211, 153, 0.15);
+    }
+
+    .plan .tag {
+      position: absolute;
+      top: -13px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--accent);
+      color: #052b20;
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 4px 14px;
+      border-radius: 999px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      white-space: nowrap;
+    }
+
+    .plan h3 { font-size: 1.25rem; }
+    .plan .for { color: var(--muted); font-size: 0.9rem; margin-top: 4px; }
+
+    .price { margin: 22px 0 4px; }
+    .price b { font-size: 2.6rem; letter-spacing: -1px; }
+    .price span { color: var(--muted); font-size: 0.9rem; }
+
+    .plan ul { list-style: none; margin: 22px 0 28px; display: grid; gap: 11px; }
+    .plan li { color: var(--muted); font-size: 0.95rem; padding-left: 26px; position: relative; }
+    .plan li::before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    .plan .btn { text-align: center; margin-top: auto; }
+
+    .price-note { text-align: center; color: var(--muted); font-size: 0.9rem; margin-top: 26px; }
+
+    
+    .contact-box {
+      background: linear-gradient(135deg, #123024, #0f1b33);
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 50px 30px;
+      text-align: center;
+    }
+
+    .contact-box h2 { font-size: clamp(1.6rem, 3.5vw, 2.3rem); }
+    .contact-box p { color: var(--muted); margin: 12px auto 30px; max-width: 560px; }
+
+    .contact-links { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 16px 24px;
+      transition: border-color 0.2s ease;
+    }
+
+    .contact-item:hover { border-color: var(--accent); }
+    .contact-item .ico { font-size: 1.4rem; }
+    .contact-item small { display: block; color: var(--muted); font-size: 0.78rem; text-transform: uppercase; letter-spacing: 1px; }
+    .contact-item strong { font-size: 1rem; }
+
+    
+    footer {
+      border-top: 1px solid var(--line);
+      padding: 26px 0;
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.88rem;
+    }
+
+    
+    @media (max-width: 720px) {
+      .nav-links { display: none; }
+      .hero { padding: 60px 0 50px; }
+      section { padding: 50px 0; }
+      .contact-links { flex-direction: column; align-items: stretch; }
+    }
+  </style>
+</head>
+<body>
+
+  
+  <header>
+    <div class="container nav">
+      <a href="#" class="logo">
+        <span class="shield">🛡</span>
+        Pick Security Team
+      </a>
+      <nav class="nav-links">
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <a href="#contact" class="btn btn-primary">Get a Website</a>
+    </div>
+  </header>
+
+  
+  <section class="hero">
+    <div class="container">
+      <span class="badge">100+ Rep · Websites · Hosting · Security</span>
+      <h1>We Build <span>Business Websites</span><br />That Win Customers</h1>
+      <p>
+        Pick Security Team designs custom websites, hosts them, and keeps them
+        protected — so your business looks professional and runs safely online.
+        One-time pricing, no surprises.
+      </p>
+      <div class="hero-actions">
+        <a href="#pricing" class="btn btn-primary">See Prices</a>
+        <a href="#contact" class="btn btn-ghost">Email Us</a>
+      </div>
+
+      <div class="stats">
+        <div class="stat"><b>100+</b><span>Reputation / Completed Work</span></div>
+        <div class="stat"><b>3</b><span>Simple Price Packages</span></div>
+        <div class="stat"><b>24/7</b><span>Hosting Monitoring</span></div>
+        <div class="stat"><b>100%</b><span>Custom-Built Websites</span></div>
+      </div>
+    </div>
+  </section>
+
+  
+  <section id="about">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Who We Are</span>
+        <h2>What is Pick Security Team?</h2>
+        <p>
+          We are a small team that does two things: we build and host websites
+          for businesses, and we make sure those sites stay secure. With 100+
+          rep behind our work, you know your project is in safe hands.
+        </p>
+      </div>
+
+      <div class="about-grid">
+        <div class="about-card">
+          <div class="icon">🖥</div>
+          <h3>We Build the Website</h3>
+          <p>
+            You tell us about your business, and we design and build a clean,
+            modern website for it — pages, contact forms, mobile-friendly layout,
+            everything included.
+          </p>
+        </div>
+        <div class="about-card">
+          <div class="icon">⚙️</div>
+          <h3>We Host It For You</h3>
+          <p>
+            No confusing setup. We put your website online and handle the
+            hosting, updates, and backups so it stays fast and always available.
+          </p>
+        </div>
+        <div class="about-card">
+          <div class="icon">🛡</div>
+          <h3>We Keep It Secure</h3>
+          <p>
+            As a security team, we protect your site with SSL, backups, and
+            monitoring — so hackers and downtime don't cost your business money.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  
+  <section id="services">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">What We Do</span>
+        <h2>Our Services</h2>
+        <p>Everything your business needs to look real, load fast, and stay safe online.</p>
+      </div>
+
+      <div class="services-grid">
+        <div class="service">
+          <span class="num">01</span>
+          <h3>Custom Website Design</h3>
+          <p>Unique websites built around your business — not boring templates. Home page, about, services, gallery, and contact pages.</p>
+        </div>
+        <div class="service">
+          <span class="num">02</span>
+          <h3>Website Hosting</h3>
+          <p>Fast, reliable hosting with SSL, daily backups, and email support. We set it all up so you never touch a control panel.</p>
+        </div>
+        <div class="service">
+          <span class="num">03</span>
+          <h3>Security &amp; Maintenance</h3>
+          <p>Ongoing protection, updates, and monitoring from a real security team. Your site stays up, safe, and running smoothly.</p>
+        </div>
+        <div class="service">
+          <span class="num">04</span>
+          <h3>Online Payments Setup</h3>
+          <p>Sell products or take bookings directly from your site with secure payment and form integrations.</p>
+        </div>
+        <div class="service">
+          <span class="num">05</span>
+          <h3>Google &amp; Maps Setup</h3>
+          <p>We register your site with Google and set up your business listing so local customers can actually find you.</p>
+        </div>
+        <div class="service">
+          <span class="num">06</span>
+          <h3>Speed &amp; Mobile Tuning</h3>
+          <p>Your site loads quickly and looks great on phones and tablets — where most of your customers will visit from.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  
+  <section id="pricing">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">One-Time Prices</span>
+        <h2>Simple, Honest Pricing</h2>
+        <p>Pick the package that fits your business. Every package is a one-time payment — no monthly website fees.</p>
+      </div>
+
+      <div class="pricing-grid">
+        
+        <div class="plan">
+          <h3>Basic</h3>
+          <p class="for">Great for a new or small business</p>
+          <div class="price"><b>$299</b> <span>one-time</span></div>
+          <ul>
+            <li>1–3 page custom website</li>
+            <li>Mobile-friendly design</li>
+            <li>Contact form + email link</li>
+            <li>Free SSL certificate</li>
+            <li>1 round of revisions</li>
+            <li>7–10 day delivery</li>
+          </ul>
+          <a href="mailto:pickserivces@gmail.com?subject=Basic%20Package%20(%24299)" class="btn btn-ghost">Choose Basic</a>
+        </div>
+
+        
+        <div class="plan featured">
+          <span class="tag">Most Popular</span>
+          <h3>Advanced</h3>
+          <p class="for">Best for growing businesses</p>
+          <div class="price"><b>$699</b> <span>one-time</span></div>
+          <ul>
+            <li>Up to 7 pages custom website</li>
+            <li>Everything in Basic</li>
+            <li>Google &amp; Maps registration</li>
+            <li>Hosting setup included</li>
+            <li>Photo gallery / services menu</li>
+            <li>3 rounds of revisions</li>
+            <li>5–7 day delivery</li>
+          </ul>
+          <a href="mailto:pickserivces@gmail.com?subject=Advanced%20Package%20(%24699)" class="btn btn-primary">Choose Advanced</a>
+        </div>
+
+        
+        <div class="plan">
+          <h3>Business</h3>
+          <p class="for">Full package for serious companies</p>
+          <div class="price"><b>$1,499</b> <span>one-time</span></div>
+          <ul>
+            <li>Unlimited pages custom website</li>
+            <li>Everything in Advanced</li>
+            <li>Online payments / bookings</li>
+            <li>Security &amp; maintenance setup</li>
+            <li>SEO basics for Google ranking</li>
+            <li>Blog or CMS you can edit yourself</li>
+            <li>Priority support + unlimited revisions (30 days)</li>
+          </ul>
+          <a href="mailto:pickserivces@gmail.com?subject=Business%20Package%20(%241499)" class="btn btn-ghost">Choose Business</a>
+        </div>
+      </div>
+
+      <p class="price-note">
+        Hosting plans start at <strong>$15/month</strong> — or ask us about a
+        hosting + maintenance bundle. Custom quotes available for bigger projects.
+      </p>
+    </div>
+  </section>
+
+  
+  <section id="contact">
+    <div class="container">
+      <div class="contact-box">
+        <span class="eyebrow">Get In Touch</span>
+        <h2>Ready for Your Website?</h2>
+        <p>
+          Send us an email or call/text — tell us about your business and which
+          package you're interested in. We usually reply the same day.
+        </p>
+
+        <div class="contact-links">
+          <a class="contact-item" href="mailto:pickserivces@gmail.com">
+            <span class="ico">✉️</span>
+            <span>
+              <small>Email</small>
+              <strong>pickserivces@gmail.com</strong>
+            </span>
+          </a>
+          <a class="contact-item" href="tel:+18024169349">
+            <span class="ico">📞</span>
+            <span>
+              <small>Call / Text</small>
+              <strong>(802) 416-9349</strong>
+            </span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  
+  <footer>
+    <div class="container">
+      © <span id="year"></span> Pick Security Team · Custom Websites, Hosting &amp; Security ·
+      <a href="mailto:pickserivces@gmail.com" style="color: var(--accent);">pickserivces@gmail.com</a>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
